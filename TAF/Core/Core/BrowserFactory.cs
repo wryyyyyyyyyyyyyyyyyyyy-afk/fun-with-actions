@@ -20,6 +20,7 @@ namespace Core.Core
                 case BrowserName.Chrome:
                     var options = new ChromeOptions { PageLoadStrategy = PageLoadStrategy.Normal };
                     options.AddArgument("no-sandbox");
+                    options.AddArgument("--headless");
                     return new ChromeDriver(options);
 
                 default:
