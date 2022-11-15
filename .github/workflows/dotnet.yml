@@ -22,8 +22,8 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       working-directory: TAF
-      run: dotnet restore ./Tests.sln
+      run: dotnet restore ./TAF.sln
     - name: Build
-      run: dotnet build --no-restore ./Tests.sln
+      run: dotnet build --no-restore ./TAF.sln
     - name: Test
-      run: dotnet test --no-build --verbosity normal ./Tests.sln
+      run: dotnet test --no-build --verbosity normal ./TAF.sln
