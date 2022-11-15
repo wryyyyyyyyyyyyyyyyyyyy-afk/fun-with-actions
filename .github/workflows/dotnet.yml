@@ -24,6 +24,8 @@ jobs:
       working-directory: TAF
       run: dotnet restore ./TAF.sln
     - name: Build
+      working-directory: TAF
       run: dotnet build --no-restore ./TAF.sln
     - name: Test
+      working-directory: TAF
       run: dotnet test --no-build --verbosity normal ./TAF.sln
