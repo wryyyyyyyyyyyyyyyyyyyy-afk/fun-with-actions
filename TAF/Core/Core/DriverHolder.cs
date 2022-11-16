@@ -12,7 +12,7 @@ namespace Core.Core
             {
                 if (_instance is null)
                 {
-                    InitDriver(BrowserName.Chrome);
+                    InitDriver(BrowserName.Remote);
                 }
 
                 return _instance;

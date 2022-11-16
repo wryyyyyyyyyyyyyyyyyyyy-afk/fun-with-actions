@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Remote;
 
 namespace Core.Core
 {
@@ -18,13 +19,15 @@ namespace Core.Core
                     return new InternetExplorerDriver();
 
                 case BrowserName.Chrome:
-                    var options = new ChromeOptions { PageLoadStrategy = PageLoadStrategy.Normal };
-                    options.AddArgument("no-sandbox");
-                    options.AddArgument("--headless");
-                    return new ChromeDriver(options);
+                    var chromeOptions = new ChromeOptions { PageLoadStrategy = PageLoadStrategy.Normal };
+                    chromeOptions.AddArgument("no-sandbox");
+                    return new ChromeDriver(chromeOptions);
 
                 default:
-                    throw new ArgumentException("Browser name is not valid");
+                case BrowserName.Remote:
+                    var remoteOptions = new ChromeOptions { PageLoadStrategy = PageLoadStrategy.Normal };
+                    remoteOptions.AddArgument("no-sandbox");
+                    return new RemoteWebDriver(remoteOptions);
             }
         }
     }

@@ -15,7 +15,6 @@ namespace Tests
             {
                 LoggerHolder.Logger.Info("Start Browser");
 
-                DriverHolder.InitDriver(BrowserName.Chrome);
                 LoggerHolder.Logger.Debug(DriverHolder.Driver.ToString());
 
                 LoggerHolder.Logger.Info("Open Home page");
