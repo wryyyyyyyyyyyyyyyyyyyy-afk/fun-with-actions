@@ -15,6 +15,8 @@ namespace Business.Business
             new WebDriverWait(DriverHolder.Driver, TimeSpan.FromSeconds(10))
                 .Until(ExpectedConditions.ElementToBeClickable(page.AcceptCookiesButton));
 
+            Thread.Sleep(2000);
+
             var element = DriverHolder.Driver.FindElement(page.AcceptCookiesButton);
             Actions actions = new Actions(DriverHolder.Driver);
             actions.MoveToElement(element);
