@@ -4,6 +4,9 @@
 name: .NET
 
 on:
+  schedule:
+    - cron: '0 12 * * *'
+  workflow_dispatch:
   push:
     branches: [ "main" ]
   pull_request:
@@ -29,3 +32,7 @@ jobs:
     - name: Test
       working-directory: TAF
       run: dotnet test --no-build --verbosity normal ./TAF.sln
+    - uses: actions/upload-artifact@v3
+      with:
+       name: screenshots
+       path: /home/runner/work/fun-with-actions/fun-with-actions/TAF/Tests/bin/Debug/net6.0/screenshots/
