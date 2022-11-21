@@ -12,7 +12,14 @@ namespace Business.Business
 
         public void AcceptAllCookies()
         {
-            DriverHolder.Driver.FindElement(page.AcceptCookiesButton).Click();
+            new WebDriverWait(DriverHolder.Driver, TimeSpan.FromSeconds(10))
+                .Until(ExpectedConditions.ElementToBeClickable(page.AcceptCookiesButton));
+
+            var element = DriverHolder.Driver.FindElement(page.AcceptCookiesButton);
+            Actions actions = new Actions(DriverHolder.Driver);
+            actions.MoveToElement(element);
+            actions.Perform();
+            element.Click();
         }
 
         public CareersContext OpenCareersPage()
