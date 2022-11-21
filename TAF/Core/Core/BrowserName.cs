@@ -3,8 +3,6 @@
     public enum BrowserName
     {
         Chrome,
-        Firefox,
-        InternetExplorer,
-        Remote
+        Firefox
     }
 }
