@@ -44,6 +44,7 @@ namespace Tests
             catch (Exception ex)
             {
                 LoggerHolder.Logger.Fatal(ex);
+                ScreenshotMaker.TakeScreenshot();
                 throw;
             }
         }
