@@ -41,9 +41,9 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: api-tests-results
-        path: /home/runner/work/fun-with-actions/fun-with-actions/TAF/APITestsResults
+        path: /home/runner/work/fun-with-actions/fun-with-actions/TAF/APITestsResults/
     - name: Upload Page Tests results
       uses: actions/upload-artifact@v3
       with:
         name: page-tests-results
-        path: /home/runner/work/fun-with-actions/fun-with-actions/TAF/PageTestsResults
+        path: /home/runner/work/fun-with-actions/fun-with-actions/TAF/PageTestsResults/
