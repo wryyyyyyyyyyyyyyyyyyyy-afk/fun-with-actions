@@ -23,14 +23,27 @@ jobs:
     - name: Build
       working-directory: TAF
       run: dotnet build --no-restore ./TAF.sln
+      
     - name: API Tests
       working-directory: TAF
-      run: dotnet test --no-build --verbosity normal --filter FullyQualifiedName~Tests.Tests.API
+      run: dotnet test --no-build --verbosity normal --filter FullyQualifiedName~Tests.Tests.API --logger trx --results-directory "APITestsResults"
     - name: Page Tests
       working-directory: TAF
-      run: dotnet test --no-build --verbosity normal --filter FullyQualifiedName!=Tests.Tests.API
-    - uses: actions/upload-artifact@v3
+      run: dotnet test --no-build --verbosity normal --filter FullyQualifiedName!=Tests.Tests.API --logger trx --results-directory "PageTestsResults"
+    
+    - name: Upload screenshots
+      uses: actions/upload-artifact@v3
       if: failure()
       with:
        name: screenshots
        path: /home/runner/work/fun-with-actions/fun-with-actions/TAF/Tests/bin/Debug/net6.0/screenshots/
+    - name: Upload API Tests results
+      uses: actions/upload-artifact@v3
+      with:
+        name: api-tests-results
+        path: /home/runner/work/fun-with-actions/fun-with-actions/TAF/APITestsResults
+    - name: Upload Page Tests results
+      uses: actions/upload-artifact@v3
+      with:
+        name: page-tests-results
+        path: /home/runner/work/fun-with-actions/fun-with-actions/TAF/PageTestsResults
