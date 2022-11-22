@@ -23,9 +23,12 @@ jobs:
     - name: Build
       working-directory: TAF
       run: dotnet build --no-restore ./TAF.sln
-    - name: Test
+    - name: API Tests
       working-directory: TAF
-      run: dotnet test --no-build --verbosity normal ./TAF.sln
+      run: dotnet test --no-build --verbosity normal --filter FullyQualifiedName~Tests.Tests.API
+    - name: Page Tests
+      working-directory: TAF
+      run: dotnet test --no-build --verbosity normal --filter FullyQualifiedName!=Tests.Tests.API
     - uses: actions/upload-artifact@v3
       if: failure()
       with:
