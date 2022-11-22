@@ -1,8 +1,6 @@
 name: Test
 
 on:
-  schedule:
-    - cron: '0 12 * * *'
   workflow_dispatch:
   push:
     branches: [ "main" ]
@@ -11,7 +9,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
